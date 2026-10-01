@@ -1,0 +1,19 @@
+{
+  "name": "taskhub-lite",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Minimal authenticated task manager built with Express, MongoDB, and React.",
+  "scripts": {
+    "dev": "concurrently \"npm run dev --workspace server\" \"npm run dev --workspace client\"",
+    "test": "npm test --workspace server && npm test --workspace client",
+    "seed": "npm run seed --workspace server",
+    "start": "npm run start --workspace server"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  },
+  "workspaces": [
+    "server",
+    "client"
+  ]
+}

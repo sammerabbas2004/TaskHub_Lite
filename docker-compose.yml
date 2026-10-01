@@ -1,0 +1,23 @@
+services:
+  mongo:
+    image: mongo:8
+    restart: unless-stopped
+    volumes:
+      - mongo-data:/data/db
+
+  app:
+    build: .
+    restart: unless-stopped
+    depends_on:
+      - mongo
+    ports:
+      - "5000:5000"
+    environment:
+      PORT: 5000
+      MONGO_URI: mongodb://mongo:27017/taskhub_lite
+      JWT_SECRET: change-this-in-production
+      JWT_EXPIRES_IN: 1d
+      CLIENT_URL: http://localhost:5000
+
+volumes:
+  mongo-data:
